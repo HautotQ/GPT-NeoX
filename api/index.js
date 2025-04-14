@@ -20,6 +20,7 @@ app.get("/chat", async (req, res) => {
   res.send(result.data);
 });
 
-app.listen(3000, () => {
-  console.log("Serveur en ligne sur http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Serveur en ligne sur le port ${PORT}`);
 });
