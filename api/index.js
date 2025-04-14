@@ -1,4 +1,4 @@
-//import express from 'express';
+import express from 'express';
 import { Client } from '@gradio/client';
 import cors from 'cors';
 
@@ -23,4 +23,8 @@ app.get("/chat", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Serveur en ligne sur le port ${PORT}`);
+});
+
+app.get('/', (req, res) => {
+  res.send('Serveur GPT-NeoX en ligne');
 });
