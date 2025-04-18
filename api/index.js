@@ -12,7 +12,7 @@ app.get("/chat", async (req, res) => {
   const result = await client.predict("/chat", {
     message: message,
     system_message: "Tu es un assistant utile.",
-    max_tokens: 100,
+    max_tokens: 100000000000000,
     temperature: 0.7,
     top_p: 0.9,
   });
