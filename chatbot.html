@@ -17,7 +17,7 @@
     try {
       const client = await Client.connect("TabarcraftOfficiel/deepseek-ai-DeepSeek-V3-0324");
       
-      const result = await client.predict("/chat", {
+      const result = await client.predict("/_check_login_status", {
         messages: [["user", question]],
         temperature: 0.7,
       });
