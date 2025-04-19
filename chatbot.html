@@ -2,29 +2,30 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Chatbot</title>
 </head>
 <body>
-  <p id="response"></p>
-  
+  <h1>Réponse :</h1>
+  <p id="response">Chargement...</p>
+
   <script type="module">
     import { Client } from "https://esm.sh/@gradio/client";
 
-    // Récupère le paramètre 'text' dans l'URL
     const params = new URLSearchParams(window.location.search);
-    const userMessage = params.get("text") || "Bonjour !";
+    const question = params.get("text") || "Bonjour !";
 
-    // Connexion à l'API Hugging Face via Gradio
-    const client = await Client.connect("HuggingFaceH4/zephyr-7b-beta");
+    try {
+      const client = await Client.connect("HuggingFaceH4/zephyr-7b-beta");
 
-    // Envoi du message au modèle
-    const result = await client.predict("/chat", {
-      messages: [["user", userMessage]],
-      temperature: 0.7,
-    });
+      const result = await client.predict("/chat", {
+        messages: [["user", question]],
+        temperature: 0.7,
+      });
 
-    // Affichage de la réponse générée
-    document.getElementById("response").innerText = result.data[0][1];
+      document.getElementById("response").innerText = result.data[0][1];
+    } catch (error) {
+      document.getElementById("response").innerText = "Erreur : " + error;
+    }
   </script>
 </body>
 </html>
