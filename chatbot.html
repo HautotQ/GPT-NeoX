@@ -15,8 +15,8 @@
     const question = params.get("text") || "Bonjour !";
 
     try {
-      const client = await Client.connect("HuggingFaceH4/zephyr-7b-beta");
-
+      const client = await Client.connect("TabarcraftOfficiel/deepseek-ai-DeepSeek-V3-0324");
+      
       const result = await client.predict("/chat", {
         messages: [["user", question]],
         temperature: 0.7,
